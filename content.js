@@ -1,8 +1,8 @@
 const draggable = pane => {
 	/*
- * @author https://twitter.com/blurspline / https://github.com/zz85
- * See post @ http://www.lab4games.net/zz85/blog/2014/11/15/resizing-moving-snapping-windows-with-js-css/
- */
+	 * @author https://twitter.com/blurspline / https://github.com/zz85
+	 * See post @ http://www.lab4games.net/zz85/blog/2014/11/15/resizing-moving-snapping-windows-with-js-css/
+	 */
 
 	// Minimum resizable area
 	var minWidth = 60;
@@ -186,6 +186,8 @@ const draggable = pane => {
 	}
 };
 
+const url = chrome.runtime.getURL('yay.mp3');
+
 const $curtain = document.createElement('x-curtain');
 const $header = document.createElement('x-curtain-header');
 const $blinds = document.createElement('x-curtain-blinds');
@@ -207,6 +209,9 @@ $curtain.style.left = '200px';
 
 $string.addEventListener('click', ev => {
 	$curtain.classList.toggle('open');
+	new Audio(url).play().catch(err => {
+		console.error(err);
+	});
 });
 
 draggable($curtain);
